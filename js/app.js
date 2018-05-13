@@ -2,6 +2,72 @@
  * Create a list that holds all of your cards
  */
 
+cards = [
+  {
+    icon: 'fa-diamond',
+    state: ''
+  },
+  {
+    icon: 'fa-diamond',
+    state: ''
+  },
+  {
+    icon: 'fa-paper-plane-o',
+    state: ''
+  },
+  {
+    icon: 'fa-paper-plane-o',
+    state: ''
+  },
+  {
+    icon: 'fa-anchor',
+    state: ''
+  },
+  {
+    icon: 'fa-anchor',
+    state: ''
+  },
+  {
+    icon: 'fa-bolt',
+    state: ''
+  },
+  {
+    icon: 'fa-bolt',
+    state: ''
+  },
+  {
+    icon: 'fa-cube',
+    state: ''
+  },
+  {
+    icon: 'fa-cube',
+    state: ''
+  },
+  {
+    icon: 'fa-leaf',
+    state: ''
+  },
+  {
+    icon: 'fa-leaf',
+    state: ''
+  },
+  {
+    icon: 'fa-bicycle',
+    state: ''
+  },
+  {
+    icon: 'fa-bicycle',
+    state: ''
+  },
+  {
+    icon: 'fa-bomb',
+    state: ''
+  },
+  {
+    icon: 'fa-bomb',
+    state: ''
+  }
+]
 
 /*
  * Display the cards on the page
