@@ -71,6 +71,8 @@ const cards = [
   }
 ]
 
+const openCards = [];
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -124,5 +126,17 @@ function flipCard(e) {
   if (e.target.nodeName === "LI") {
     e.target.classList.toggle("open");
     e.target.classList.toggle("show");
+  }
+  compareCards(e.target);
+}
+
+function compareCards(card) {
+  openCards.push(card);
+  if (openCards.length === 2) {
+    const card1 = openCards[0].innerHTML;
+    const card2 = openCards[1].innerHTML;
+    if (card1 === card2) {
+      
+    }
   }
 }
