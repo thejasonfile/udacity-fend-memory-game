@@ -4,56 +4,7 @@ const deck = document.querySelector(".deck");
  * Create a list that holds all of your cards
  */
 
-const cards = [
-  {
-    icon: 'fa-diamond',
-  },
-  {
-    icon: 'fa-diamond',
-  },
-  {
-    icon: 'fa-paper-plane-o',
-  },
-  {
-    icon: 'fa-paper-plane-o',
-  },
-  {
-    icon: 'fa-anchor',
-  },
-  {
-    icon: 'fa-anchor',
-  },
-  {
-    icon: 'fa-bolt',
-  },
-  {
-    icon: 'fa-bolt',
-  },
-  {
-    icon: 'fa-cube',
-  },
-  {
-    icon: 'fa-cube',
-  },
-  {
-    icon: 'fa-leaf',
-  },
-  {
-    icon: 'fa-leaf',
-  },
-  {
-    icon: 'fa-bicycle',
-  },
-  {
-    icon: 'fa-bicycle',
-  },
-  {
-    icon: 'fa-bomb',
-  },
-  {
-    icon: 'fa-bomb',
-  }
-]
+const cards = ['fa-diamond', 'fa-diamond', 'fa-paper-plane-o', 'fa-paper-plane-o', 'fa-anchor', 'fa-anchor', 'fa-bolt', 'fa-bolt', 'fa-cube', 'fa-cube', 'fa-leaf', 'fa-leaf', 'fa-bicycle', 'fa-bicycle', 'fa-bomb', 'fa-bomb' ]
 
 let openCards = [];
 let numberOfMatches = 0;
@@ -70,7 +21,7 @@ const shuffledCards = shuffle(cards);
    for (const item of array) {
      let cardHTML = document.createElement("li");
      cardHTML.setAttribute("class", "card");
-     cardHTML.innerHTML = `<i class="fa ${item.icon}"></i>`;
+     cardHTML.innerHTML = `<i class="fa ${item}"></i>`;
      deck.appendChild(cardHTML);
    }
  }
@@ -105,15 +56,16 @@ function shuffle(array) {
 
 
 function flipCard(e) {
-  if (e.target.nodeName === "LI") {
+  let currentCard = e.target;
+  if (e.target.nodeName === "LI" && !e.target.classList.contains("show") && !e.target.classList.contains("match") && openCards.length < 2) {
     e.target.classList.add("open");
     e.target.classList.add("show");
+    openCards.push(currentCard);
+    compareCards(e.target);
   }
-  compareCards(e.target);
 }
 
 function compareCards(card) {
-  openCards.push(card);
   if (openCards.length === 2) {
     const card1 = openCards[0].innerHTML;
     const card2 = openCards[1].innerHTML;
@@ -153,12 +105,19 @@ function checkForWin() {
   }
 }
 
-/*
-  animations for Matching
-  animations for not Matching
-  modal for game win
-  reset button functionality
-*/
-
 createCards(shuffledCards);
 deck.addEventListener("click", flipCard);
+
+/* TODO: minimum
+  feature: animations for matching
+  feature: animations for not matching
+  feature: modal for game win
+  feature: reset button functionality
+  feature: star rating
+  feature: responsive design
+*/
+
+/* TODO: extras
+  feature: keep track of lowest score in local storage
+  feature: stop duplicating code in cards array
+*/
