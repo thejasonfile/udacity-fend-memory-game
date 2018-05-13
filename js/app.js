@@ -147,10 +147,18 @@ function lockCards() {
   openCards[0].classList.add("match");
   openCards[1].classList.add("match");
   openCards = [];
+  incrementMoves();
 }
 
 function hideCards() {
   openCards[0].classList.remove("show", "open");
   openCards[1].classList.remove("show", "open");
   openCards = [];
+  incrementMoves();
+}
+
+function incrementMoves() {
+  const moves = document.querySelector(".moves");
+  let currentNumber = Number(moves.innerText); //Number function from https://www.w3schools.com/jsref/jsref_number.asp
+  moves.innerText = currentNumber += 1;
 }
