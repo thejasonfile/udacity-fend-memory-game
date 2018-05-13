@@ -123,7 +123,7 @@ function compareCards(card) {
     if (card1 === card2) {
       lockCards();
     } else {
-      hideCards();
+      setTimeout(hideCards, 500);
     }
   }
 }
