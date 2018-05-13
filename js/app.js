@@ -71,7 +71,7 @@ const cards = [
   }
 ]
 
-const openCards = [];
+let openCards = [];
 
 /*
  * Display the cards on the page
@@ -124,8 +124,8 @@ deck.addEventListener("click", flipCard);
 
 function flipCard(e) {
   if (e.target.nodeName === "LI") {
-    e.target.classList.toggle("open");
-    e.target.classList.toggle("show");
+    e.target.classList.add("open");
+    e.target.classList.add("show");
   }
   compareCards(e.target);
 }
@@ -136,7 +136,21 @@ function compareCards(card) {
     const card1 = openCards[0].innerHTML;
     const card2 = openCards[1].innerHTML;
     if (card1 === card2) {
-      
+      lockCards();
+    } else {
+      hideCards();
     }
   }
+}
+
+function lockCards() {
+  openCards[0].classList.add("match");
+  openCards[1].classList.add("match");
+  openCards = [];
+}
+
+function hideCards() {
+  openCards[0].classList.remove("show", "open");
+  openCards[1].classList.remove("show", "open");
+  openCards = [];
 }
