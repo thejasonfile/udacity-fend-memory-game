@@ -57,6 +57,7 @@ const cards = [
 
 let openCards = [];
 let numberOfMatches = 0;
+const shuffledCards = shuffle(cards);
 
 /*
  * Display the cards on the page
@@ -64,8 +65,6 @@ let numberOfMatches = 0;
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
-
- const shuffledCards = shuffle(cards);
 
  function createCards(array) {
    for (const item of array) {
@@ -75,8 +74,6 @@ let numberOfMatches = 0;
      deck.appendChild(cardHTML);
    }
  }
-
-createCards(shuffledCards);
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -105,7 +102,7 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-deck.addEventListener("click", flipCard);
+
 
 function flipCard(e) {
   if (e.target.nodeName === "LI") {
@@ -155,3 +152,13 @@ function checkForWin() {
     console.log('You won!!!');
   }
 }
+
+/*
+  animations for Matching
+  animations for not Matching
+  modal for game win
+  reset button functionality
+*/
+
+createCards(shuffledCards);
+deck.addEventListener("click", flipCard);
