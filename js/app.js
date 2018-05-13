@@ -1,3 +1,5 @@
+const deck = document.querySelector(".deck");
+
 /*
  * Create a list that holds all of your cards
  */
@@ -79,7 +81,6 @@ const cards = [
  const shuffledCards = shuffle(cards);
 
  function createCards(array) {
-   const deck = document.querySelector(".deck");
    for (const item of array) {
      let cardHTML = document.createElement("li");
      cardHTML.setAttribute("class", "card");
@@ -116,3 +117,12 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+deck.addEventListener("click", flipCard);
+
+function flipCard(e) {
+  if (e.target.nodeName === "LI") {
+    e.target.classList.toggle("open");
+    e.target.classList.toggle("show");
+  }
+}
