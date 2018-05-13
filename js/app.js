@@ -79,10 +79,11 @@ const cards = [
  const shuffledCards = shuffle(cards);
 
  function createCards(array) {
-   const deck = document.querySelector('.deck');
+   const deck = document.querySelector(".deck");
    for (const item of array) {
      let cardHTML = document.createElement("li");
-     cardHTML.innerHTML = `<i class=${item.icon}></i>`;
+     cardHTML.setAttribute("class", "card");
+     cardHTML.innerHTML = `<i class="fa ${item.icon}"></i>`;
      deck.appendChild(cardHTML);
    }
  }
