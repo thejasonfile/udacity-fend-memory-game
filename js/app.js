@@ -2,7 +2,7 @@
  * Create a list that holds all of your cards
  */
 
-cards = [
+const cards = [
   {
     icon: 'fa-diamond',
     state: ''
@@ -75,6 +75,19 @@ cards = [
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+ const shuffledCards = shuffle(cards);
+
+ function createCards(array) {
+   const deck = document.querySelector('.deck');
+   for (const item of array) {
+     let cardHTML = document.createElement("li");
+     cardHTML.innerHTML = `<i class=${item.icon}></i>`;
+     deck.appendChild(cardHTML);
+   }
+ }
+
+createCards(shuffledCards);
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
