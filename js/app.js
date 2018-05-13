@@ -72,6 +72,7 @@ const cards = [
 ]
 
 let openCards = [];
+let numberOfMatches = 0;
 
 /*
  * Display the cards on the page
@@ -147,6 +148,7 @@ function lockCards() {
   openCards[0].classList.add("match");
   openCards[1].classList.add("match");
   openCards = [];
+  numberOfMatches += 1;
   incrementMoves();
 }
 
@@ -161,4 +163,11 @@ function incrementMoves() {
   const moves = document.querySelector(".moves");
   let currentNumber = Number(moves.innerText); //Number function from https://www.w3schools.com/jsref/jsref_number.asp
   moves.innerText = currentNumber += 1;
+  checkForWin();
+}
+
+function checkForWin() {
+  if (numberOfMatches === 8) {
+    console.log('You won!!!');
+  }
 }
