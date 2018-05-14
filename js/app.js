@@ -84,8 +84,8 @@ function compareCards(card) {
 }
 
 function lockCards() {
-  openCards[0].classList.add("match");
-  openCards[1].classList.add("match");
+  openCards[0].classList.add("match", "animated", "rubberBand");
+  openCards[1].classList.add("match", "animated", "rubberBand");
   openCards = [];
   numberOfMatches += 1;
   incrementMoves();
