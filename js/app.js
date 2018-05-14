@@ -116,6 +116,7 @@ function resetGame() {
   deck.innerHTML = "";
   numberOfMatches = 0;
   moves.innerText = 0;
+  openCards = [];
   startGame(cards);
 }
 
