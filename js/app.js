@@ -73,11 +73,13 @@ function flipCard(e) {
 
 function compareCards(card) {
   if (openCards.length === 2) {
-    const card1 = openCards[0].innerHTML;
-    const card2 = openCards[1].innerHTML;
-    if (card1 === card2) {
+    const card1 = openCards[0];
+    const card2 = openCards[1];
+    if (card1.innerHTML === card2.innerHTML) {
       lockCards();
     } else {
+      card1.classList.add("wrong", "animated", "shake");
+      card2.classList.add("wrong", "animated", "shake");
       setTimeout(hideCards, 500);
     }
   }
@@ -92,8 +94,8 @@ function lockCards() {
 }
 
 function hideCards() {
-  openCards[0].classList.remove("show", "open");
-  openCards[1].classList.remove("show", "open");
+  openCards[0].classList.remove("wrong", "show", "open", "animated", "shake");
+  openCards[1].classList.remove("wrong", "show", "open", "animated", "shake");
   openCards = [];
   incrementMoves();
 }
@@ -123,8 +125,6 @@ deck.addEventListener("click", flipCard);
 resetButton.addEventListener("click", resetGame);
 
 /* TODO: minimum
-  feature: animations for matching
-  feature: animations for not matching
   feature: modal for game win
   feature: star rating
   feature: responsive design
