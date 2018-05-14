@@ -5,6 +5,7 @@ const modal = document.querySelector(".modal");
 const arrow = document.querySelector(".arrow");
 const playAgainButton = document.querySelector(".play-again");
 const modalStats = document.querySelector(".stats");
+const starList = document.querySelector(".stars");
 
 /*
  * Create a list that holds all of your cards
@@ -111,12 +112,18 @@ function hideCards() {
 function incrementMoves() {
   let currentNumber = Number(moves.innerText); //Number function from https://www.w3schools.com/jsref/jsref_number.asp
   moves.innerText = currentNumber += 1;
-  setStars();
+  setStars(currentNumber);
   checkForWin(currentNumber);
 }
 
-function setStars() {
-  console.log('set stars');
+function setStars(number) {
+  if (number >= 30) {
+    starList.innerHTML = ""
+  } else if (number >= 20) {
+    starList.innerHTML = "<li><i class='fa fa-star'></i></li>";
+  } else if (number >= 10) {
+    starList.innerHTML = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
+  }
 }
 
 function checkForWin(numberOfMoves) {
@@ -125,7 +132,7 @@ function checkForWin(numberOfMoves) {
     modal.setAttribute("style", "display: initial");
     modal.classList.add("animated", "fadeIn");
     arrow.classList.add("animated", "rotateIn");
-    modalMessage.innerText = `With ${numberOfMoves} moves and 3 stars!!!`;
+    modalMessage.innerHTML = `With ${numberOfMoves} moves and 3 stars!!!`;
     modalStats.appendChild(modalMessage);
   }
 }
