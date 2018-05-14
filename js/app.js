@@ -70,23 +70,26 @@ function flipCard(e) {
   if (e.target.nodeName === "LI" && !e.target.classList.contains("show") && !e.target.classList.contains("match") && openCards.length < 2) {
     e.target.classList.add("open");
     e.target.classList.add("show");
-    openCards.push(currentCard);
-    compareCards(e.target);
+    addCardToArray(e.target);
   }
 }
 
-function compareCards(card) {
-  setStars();
+function addCardToArray(card) {
+  openCards.push(card);
   if (openCards.length === 2) {
-    const card1 = openCards[0];
-    const card2 = openCards[1];
-    if (card1.innerHTML === card2.innerHTML) {
-      lockCards();
-    } else {
-      card1.classList.add("wrong", "animated", "shake");
-      card2.classList.add("wrong", "animated", "shake");
-      setTimeout(hideCards, 500);
-    }
+    compareCards(openCards);
+  }
+}
+
+function compareCards(array) {
+  const card1 = array[0];
+  const card2 = array[1];
+  if (card1.innerHTML === card2.innerHTML) {
+    lockCards();
+  } else {
+    card1.classList.add("wrong", "animated", "shake");
+    card2.classList.add("wrong", "animated", "shake");
+    setTimeout(hideCards, 500);
   }
 }
 
@@ -108,6 +111,7 @@ function hideCards() {
 function incrementMoves() {
   let currentNumber = Number(moves.innerText); //Number function from https://www.w3schools.com/jsref/jsref_number.asp
   moves.innerText = currentNumber += 1;
+  setStars();
   checkForWin(currentNumber);
 }
 
@@ -146,9 +150,6 @@ playAgainButton.addEventListener("click", resetGame);
   feature: add star rating to modal
   feature: star rating
   feature: responsive design
-  feature: modal background same as game
-
-  bug: paragraph gets added to modal info after every play through
 */
 
 /* TODO: extras
