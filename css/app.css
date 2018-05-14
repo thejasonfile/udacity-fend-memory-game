@@ -123,7 +123,7 @@ h1 {
    width: 100vw;
    height: 100vh;
    text-align: center;
-   background: white;
+   background: #fff url('../img/geometry2.png');
  }
 
  .modal-container {

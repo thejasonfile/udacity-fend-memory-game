@@ -4,6 +4,7 @@ const resetButton = document.querySelector(".restart");
 const modal = document.querySelector(".modal");
 const arrow = document.querySelector(".arrow");
 const playAgainButton = document.querySelector(".play-again");
+const modalStats = document.querySelector(".stats");
 
 /*
  * Create a list that holds all of your cards
@@ -75,6 +76,7 @@ function flipCard(e) {
 }
 
 function compareCards(card) {
+  setStars();
   if (openCards.length === 2) {
     const card1 = openCards[0];
     const card2 = openCards[1];
@@ -109,9 +111,12 @@ function incrementMoves() {
   checkForWin(currentNumber);
 }
 
+function setStars() {
+  console.log('set stars');
+}
+
 function checkForWin(numberOfMoves) {
   if (numberOfMatches === 8) {
-    const modalStats = document.querySelector(".stats");
     const modalMessage = document.createElement("p");
     modal.setAttribute("style", "display: initial");
     modal.classList.add("animated", "fadeIn");
@@ -124,6 +129,7 @@ function checkForWin(numberOfMoves) {
 function resetGame() {
   modal.setAttribute("style", "display: hidden");
   deck.innerHTML = "";
+  modalStats.innerHTML = "";
   numberOfMatches = 0;
   moves.innerText = 0;
   openCards = [];
@@ -140,6 +146,7 @@ playAgainButton.addEventListener("click", resetGame);
   feature: add star rating to modal
   feature: star rating
   feature: responsive design
+  feature: modal background same as game
 
   bug: paragraph gets added to modal info after every play through
 */
