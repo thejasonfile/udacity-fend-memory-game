@@ -1,15 +1,18 @@
 const deck = document.querySelector(".deck");
 const moves = document.querySelector(".moves");
+const resetButton = document.querySelector(".restart");
+const modal = document.querySelector(".modal");
+const arrow = document.querySelector(".arrow");
+const playAgainButton = document.querySelector(".play-again");
 
 /*
  * Create a list that holds all of your cards
  */
 
-const cards = ['fa-diamond', 'fa-diamond', 'fa-paper-plane-o', 'fa-paper-plane-o', 'fa-anchor', 'fa-anchor', 'fa-bolt', 'fa-bolt', 'fa-cube', 'fa-cube', 'fa-leaf', 'fa-leaf', 'fa-bicycle', 'fa-bicycle', 'fa-bomb', 'fa-bomb' ]
+const cards = ['fa-gem', 'fa-gem', 'fa-paper-plane', 'fa-paper-plane', 'fa-anchor', 'fa-anchor', 'fa-bolt', 'fa-bolt', 'fa-cube', 'fa-cube', 'fa-leaf', 'fa-leaf', 'fa-bicycle', 'fa-bicycle', 'fa-bomb', 'fa-bomb' ]
 
 let openCards = [];
 let numberOfMatches = 0;
-const resetButton = document.querySelector(".restart");
 
 /*st
  * Display the cards on the page
@@ -27,7 +30,7 @@ function startGame(array) {
    for (const item of array) {
      let cardHTML = document.createElement("li");
      cardHTML.setAttribute("class", "card");
-     cardHTML.innerHTML = `<i class="fa ${item}"></i>`;
+     cardHTML.innerHTML = `<i class="far fas ${item}"></i>`;
      deck.appendChild(cardHTML);
    }
  }
@@ -103,16 +106,23 @@ function hideCards() {
 function incrementMoves() {
   let currentNumber = Number(moves.innerText); //Number function from https://www.w3schools.com/jsref/jsref_number.asp
   moves.innerText = currentNumber += 1;
-  checkForWin();
+  checkForWin(currentNumber);
 }
 
-function checkForWin() {
+function checkForWin(numberOfMoves) {
   if (numberOfMatches === 8) {
-    console.log('You won!!!');
+    const modalStats = document.querySelector(".stats");
+    const modalMessage = document.createElement("p");
+    modal.setAttribute("style", "display: initial");
+    modal.classList.add("animated", "fadeIn");
+    arrow.classList.add("animated", "rotateIn");
+    modalMessage.innerText = `With ${numberOfMoves} moves and 3 stars!!!`;
+    modalStats.appendChild(modalMessage);
   }
 }
 
 function resetGame() {
+  modal.setAttribute("style", "display: hidden");
   deck.innerHTML = "";
   numberOfMatches = 0;
   moves.innerText = 0;
@@ -124,11 +134,14 @@ startGame(cards);
 
 deck.addEventListener("click", flipCard);
 resetButton.addEventListener("click", resetGame);
+playAgainButton.addEventListener("click", resetGame);
 
 /* TODO: minimum
-  feature: modal for game win
+  feature: add star rating to modal
   feature: star rating
   feature: responsive design
+
+  bug: paragraph gets added to modal info after every play through
 */
 
 /* TODO: extras

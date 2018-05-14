@@ -111,3 +111,35 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*
+ * Styles for the modal
+ */
+
+ .modal {
+   display: none;
+   position: fixed;
+   top: 0;
+   width: 100vw;
+   height: 100vh;
+   text-align: center;
+   background: white;
+ }
+
+ .modal-container {
+   margin-top: 25vh;
+ }
+
+ .modal .arrow {
+   font-size: 20vh;
+   color: #037b03;
+ }
+
+ .modal .play-again {
+   cursor: pointer;
+   padding: .5em 1em;
+   font-size: 2em;
+   color: #fff;
+   background-color: #037b03;
+   border-radius: 15px;
+ }
