@@ -1,11 +1,12 @@
 const deck = document.querySelector(".deck");
-const moves = document.querySelector(".moves");
+const moves = document.querySelector(".moves-number");
 const resetButton = document.querySelector(".restart");
 const modal = document.querySelector(".modal");
 const arrow = document.querySelector(".arrow");
 const playAgainButton = document.querySelector(".play-again");
 const modalStats = document.querySelector(".stats");
 const starList = document.querySelector(".stars");
+const timerDisplay = document.querySelector(".timer-count");
 
 /*
  * Create a list that holds all of your cards
@@ -16,6 +17,8 @@ const cards = ['fa-gem', 'fa-gem', 'fa-paper-plane', 'fa-paper-plane', 'fa-ancho
 let openCards = [];
 let numberOfMatches = 0;
 let numberOfStars = 3;
+let timer = 0;
+let myTimer = null;
 
 /*st
  * Display the cards on the page
@@ -26,7 +29,12 @@ let numberOfStars = 3;
 
 function startGame(array) {
   const shuffledArray = shuffle(array);
+  myTimer = setInterval(startTimer, 1000); //setInterval info from https://www.w3schools.com/jsref/met_win_setinterval.asp
   createCards(array);
+}
+
+function startTimer() {
+  timerDisplay.innerHTML = ++timer;
 }
 
  function createCards(array) {
@@ -133,16 +141,20 @@ function setStars(number) {
 function checkForWin(numberOfMoves) {
   if (numberOfMatches === 8) {
     const modalMessage = document.createElement("p");
+    clearInterval(myTimer);
     modal.setAttribute("style", "display: initial");
     modal.classList.add("animated", "fadeIn");
     arrow.classList.add("animated", "rotateIn");
-    modalMessage.innerHTML = `With ${numberOfMoves} moves and ${numberOfStars} stars!!!`;
+    modalMessage.innerHTML = `With ${numberOfMoves} moves in ${timer} seconds and ${numberOfStars} stars!!!`;
     modalStats.appendChild(modalMessage);
   }
 }
 
 function resetGame() {
   modal.setAttribute("style", "display: hidden");
+  timer = 0;
+  timerDisplay.innerHTML = 0;
+  clearInterval(myTimer);
   deck.innerHTML = "";
   modalStats.innerHTML = "";
   numberOfMatches = 0;
@@ -161,6 +173,7 @@ playAgainButton.addEventListener("click", resetGame);
 
 /* TODO: minimum
   feature: responsive design
+  feature: README
 */
 
 /* TODO: extras
