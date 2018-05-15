@@ -170,14 +170,3 @@ startGame(cards);
 deck.addEventListener("click", flipCard);
 resetButton.addEventListener("click", resetGame);
 playAgainButton.addEventListener("click", resetGame);
-
-/* TODO: minimum
-  feature: responsive design
-  feature: README
-*/
-
-/* TODO: extras
-  feature: keep track of lowest score in local storage
-  feature: stop duplicating code in cards array
-  feature: run functions only when 2 cards are flipped
-*/
