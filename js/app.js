@@ -15,6 +15,7 @@ const cards = ['fa-gem', 'fa-gem', 'fa-paper-plane', 'fa-paper-plane', 'fa-ancho
 
 let openCards = [];
 let numberOfMatches = 0;
+let numberOfStars = 3;
 
 /*st
  * Display the cards on the page
@@ -118,11 +119,14 @@ function incrementMoves() {
 
 function setStars(number) {
   if (number >= 30) {
-    starList.innerHTML = ""
+    starList.innerHTML = "<li><i class='far fa-star'></i></li><li><i class='far fa-star'></i></li><li><i class='far fa-star'></i></li>";
+    numberOfStars = 0;
   } else if (number >= 20) {
-    starList.innerHTML = "<li><i class='fa fa-star'></i></li>";
+    starList.innerHTML = "<li><i class='fas fa-star'></i></li><li><i class='far fa-star'></i></li><li><i class='far fa-star'></i></li>";
+    numberOfStars = 1;
   } else if (number >= 10) {
-    starList.innerHTML = "<li><i class='fa fa-star'></i></li><li><i class='fa fa-star'></i></li>";
+    starList.innerHTML = "<li><i class='fas fa-star'></i></li><li><i class='fas fa-star'></i></li><li><i class='far fa-star'></i></li>";
+    numberOfStars = 2;
   }
 }
 
@@ -132,7 +136,7 @@ function checkForWin(numberOfMoves) {
     modal.setAttribute("style", "display: initial");
     modal.classList.add("animated", "fadeIn");
     arrow.classList.add("animated", "rotateIn");
-    modalMessage.innerHTML = `With ${numberOfMoves} moves and 3 stars!!!`;
+    modalMessage.innerHTML = `With ${numberOfMoves} moves and ${numberOfStars} stars!!!`;
     modalStats.appendChild(modalMessage);
   }
 }
@@ -144,6 +148,8 @@ function resetGame() {
   numberOfMatches = 0;
   moves.innerText = 0;
   openCards = [];
+  numberOfStars = 3;
+  starList.innerHTML = "<li><i class='fas fa-star'></i></li><li><i class='fas fa-star'></i></li><li><i class='fas fa-star'></i></li>";
   startGame(cards);
 }
 
@@ -154,12 +160,11 @@ resetButton.addEventListener("click", resetGame);
 playAgainButton.addEventListener("click", resetGame);
 
 /* TODO: minimum
-  feature: add star rating to modal
-  feature: star rating
   feature: responsive design
 */
 
 /* TODO: extras
   feature: keep track of lowest score in local storage
   feature: stop duplicating code in cards array
+  feature: run functions only when 2 cards are flipped
 */
