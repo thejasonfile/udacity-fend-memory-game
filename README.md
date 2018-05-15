@@ -9,7 +9,7 @@
 
 ## Description
 
-A memory match game built with Javascript.  
+A memory match game built with Javascript.  This is the project for section 2 in [Udacity's](https://www.udacity.com/) Front-End Nanodegree (FEND) Program.
 
 Dependencies include:
   * [Font Awesome v 5.0.13](https://fontawesome.com/)
