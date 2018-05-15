@@ -2,19 +2,28 @@
 
 ## Table of Contents
 
+* [Description](#description)
 * [Instructions](#instructions)
 * [Contributing](#contributing)
 
+
+## Description
+
+A memory match game built with Javascript.  
+
+Dependencies include:
+  * [Font Awesome v 5.0.13](https://fontawesome.com/)
+  * [Animate CSS](https://daneden.github.io/animate.css/)
+  * [Google Font Coda](https://fonts.google.com/specimen/Coda)
+
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Click on a tile to reveal its icon.  Click on a second tile to see if you've made a match.  If you have then the tiles remain shown and you move on to finding the next match.  If you have not made a match, then the tiles go back to being hidden and you have to find their match.
 
-To get started, open `js/app.js` and start building out the app's functionality
+Once all matches have been found you will be told how many moves, seconds, and stars you have.
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+You can also reset the game using the 'Reset' button.
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+If you have something to add or change with the code, please submit a Pull Request and it will be reviewed.
